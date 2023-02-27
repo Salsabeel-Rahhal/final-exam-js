@@ -25,16 +25,8 @@ export default class OfficesController {
     })
     const fields = await ctx.request.validate({ schema: newSchema })
     var Office = new Office()
-    Office.id = fields.id
-    Office.city = fields.city
-    Office.phone = fields.phone
-    Office.addressLine1 = fields.address_line1
-    Office.addressLine2 = fields.address_line2
-    Office.state = fields.state
-    Office.country = fields.country
-    Office.postalCode = fields.postal_code
-    Office.territory = fields.territory
-    var result = await Office.save()
+    Office.create(ctx.request.all())
+    var result = Office.save()
     return result
   }
   public async update(ctx: HttpContextContract) {

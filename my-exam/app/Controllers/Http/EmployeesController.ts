@@ -25,15 +25,8 @@ export default class EmployeesController {
     })
     const fields = await ctx.request.validate({ schema: newSchema })
     var employee = new Employee()
-    employee.id = fields.id
-    employee.firstName = fields.first_name
-    employee.laststName = fields.last_name
-    employee.extension = fields.extension
-    employee.email = fields.email
-    employee.officeCode = fields.office_code
-    employee.reportsTo = fields.reports_to
-    employee.jobTitle = fields.job_title
-    var result = await employee.save()
+    Employee.create(ctx.request.all())
+    var result = employee.save()
     return result
   }
   public async update(ctx: HttpContextContract) {

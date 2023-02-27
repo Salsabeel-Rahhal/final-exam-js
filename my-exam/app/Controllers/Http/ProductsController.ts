@@ -3,7 +3,7 @@ import { schema, rules } from '@ioc:Adonis/Core/Validator'
 import Product from 'App/Models/Product'
 
 export default class ProductsController {
-  public async getAll() {
+  public async getAll(ctx: HttpContextContract) {
     var result = await Product.all()
     var productLineId = ctx.request.input('productLineId')
     var quantityInStock = ctx.request.input('quantityInStock')

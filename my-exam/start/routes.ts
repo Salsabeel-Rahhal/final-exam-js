@@ -25,9 +25,9 @@ import Product from 'App/Models/Product'
 Route.group(() => {
   Route.get('/', 'CustomersController.getAll')
   Route.get('/:id', 'CustomersController.getId')
-  Route.post('/', 'CustomersController.login')
-  Route.put('/:id', 'CustomersController.logout')
-  Route.delete('/:id', 'CustomersController.create')
+  Route.post('/create', 'CustomersController.create')
+  Route.put('/:id', 'CustomersController.update')
+  Route.delete('/:id', 'CustomersController.destroy')
 }).prefix('/customers')
 
 Route.group(() => {
