@@ -13,7 +13,7 @@ export default class Customer extends BaseModel {
   @column({ serializeAs: 'contact_last_name' })
   public contactLastName: string
   @column({ serializeAs: 'phone_number' })
-  public phoneNumber: number
+  public phoneNumber: string
   @column({ serializeAs: 'address_line1' })
   public addressLine1: string
   @column({ serializeAs: 'address_line2' })

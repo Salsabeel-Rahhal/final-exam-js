@@ -7,11 +7,11 @@ export default class Order extends BaseModel {
   @column({ isPrimary: true })
   public id: number
   @column({ serializeAs: 'order_date' })
-  public orderDate: Date
+  public orderDate: DateTime
   @column({ serializeAs: 'required_date' })
-  public requiredDate: Date
+  public requiredDate: DateTime
   @column({ serializeAs: 'shipped_date' })
-  public shippedDate: Date
+  public shippedDate: DateTime
   @column({ serializeAs: 'status' })
   public status: string
   @column({ serializeAs: 'comments' })

@@ -20,6 +20,66 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async () => {
-  return { hello: 'world' }
-})
+Route.group(() => {
+  Route.get('/', 'CustomersController.getAll')
+  Route.get('/:id', 'CustomersController.getId')
+  Route.post('/', 'CustomersController.login')
+  Route.put('/:id', 'CustomersController.logout')
+  Route.delete('/:id', 'CustomersController.create')
+}).prefix('/customers')
+
+Route.group(() => {
+  Route.get('/', 'EmployeesController.getAll')
+  Route.get('/:id', 'EmployeesController.getId')
+  Route.post('/', 'EmployeesController.create')
+  Route.put('/:id', 'EmployeesController.update')
+  Route.delete('/:id', 'EmployeesController.destroy')
+}).prefix('/employees')
+
+Route.group(() => {
+  Route.get('/', 'OfficesController.getAll')
+  Route.get('/:id', 'OfficesController.getId')
+  Route.post('/', 'OfficesController.create')
+  Route.put('/:id', 'OfficesController.update')
+  Route.delete('/:id', 'OfficesController.destroy')
+}).prefix('/offices')
+
+Route.group(() => {
+  Route.get('/', 'OrderdetailsController.getAll')
+  Route.get('/:id', 'OrderdetailsController.getId')
+  Route.post('/', 'OrderdetailsController.create')
+  Route.put('/:id', 'OrderdetailsController.update')
+  Route.delete('/:id', 'OrderdetailsController.destroy')
+}).prefix('/orderdetails')
+
+Route.group(() => {
+  Route.get('/', 'OrdersController.getAll')
+  Route.get('/:id', 'OrdersController.getId')
+  Route.post('/', 'OrdersController.create')
+  Route.put('/:id', 'OrdersController.update')
+  Route.delete('/:id', 'OrdersController.destroy')
+}).prefix('/orders')
+
+Route.group(() => {
+  Route.get('/', 'PaymentsController.getAll')
+  Route.get('/:id', 'PaymentsController.getId')
+  Route.post('/', 'PaymentsController.create')
+  Route.put('/:id', 'PaymentsController.update')
+  Route.delete('/:id', 'PaymentsController.destroy')
+}).prefix('/payments')
+
+Route.group(() => {
+  Route.get('/', 'ProductlinesController.getAll')
+  Route.get('/:id', 'ProductlinesController.getId')
+  Route.post('/', 'ProductlinesController.create')
+  Route.put('/:id', 'ProductlinesController.update')
+  Route.delete('/:id', 'ProductlinesController.destroy')
+}).prefix('/productlines')
+
+Route.group(() => {
+  Route.get('/', 'ProductsController.getAll')
+  Route.get('/:id', 'ProductsController.getId')
+  Route.post('/', 'ProductsController.create')
+  Route.put('/:id', 'ProductsController.update')
+  Route.delete('/:id', 'ProductsController.destroy')
+}).prefix('/products')

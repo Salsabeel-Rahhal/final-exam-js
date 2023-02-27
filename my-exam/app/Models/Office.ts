@@ -3,7 +3,7 @@ import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 
 export default class Office extends BaseModel {
   @column({ isPrimary: true })
-  public id: number
+  public id: string
   @column({ serializeAs: 'city' })
   public city: string
   @column({ serializeAs: 'phone' })

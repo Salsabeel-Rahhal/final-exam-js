@@ -7,9 +7,9 @@ export default class Payment extends BaseModel {
   @column({ isPrimary: true })
   public customerId: number
   @column({ isPrimary: true })
-  public checkNumber: number
+  public checkNumber: string
   @column({ serializeAs: 'payment_date' })
-  public paymentDate: Date
+  public paymentDate: DateTime
   @column({ serializeAs: 'amount' })
   public amount: number
   @belongsTo(() => Customer, {

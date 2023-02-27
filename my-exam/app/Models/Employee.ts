@@ -2,6 +2,7 @@ import { DateTime } from 'luxon'
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 
 export default class Employee extends BaseModel {
+  public static table = 'employees'
   @column({ isPrimary: true })
   public id: number
   @column({ serializeAs: 'first_name' })
