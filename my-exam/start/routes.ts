@@ -19,6 +19,8 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
+import Order from 'App/Models/Order'
+import Product from 'App/Models/Product'
 
 Route.group(() => {
   Route.get('/', 'CustomersController.getAll')

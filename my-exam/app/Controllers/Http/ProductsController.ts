@@ -5,6 +5,17 @@ import Product from 'App/Models/Product'
 export default class ProductsController {
   public async getAll() {
     var result = await Product.all()
+    var productLineId = ctx.request.input('productLineId')
+    var quantityInStock = ctx.request.input('quantityInStock')
+    var query = Product.query()
+
+    if (productLineId) {
+      query.where('product_line_id', productLineId)
+    }
+    if (quantityInStock < 5) {
+      query.where('quantity_in_stock', quantityInStock)
+    }
+    var result = await query
     return result
   }
   public async getProductLineId(ctx: HttpContextContract) {
@@ -73,13 +84,14 @@ export default class ProductsController {
     return result
   }
   public async destroy(ctx: HttpContextContract) {
-    var ProductLineId = ctx.params.product_line_id;
-    if (ProductLineId == null) {
-      var id = ctx.params.id;
-      var product = await product.findOrFail(id);
-      await product.delete();
-      return { message: 'The product has been deleted!' };
+    var ProductLineId = ctx.params.product_line_id
+    if (ProductLineId === null) {
+      var id = ctx.params.id
+      var product = await product.findOrFail(id)
+      await product.delete()
+      return { message: 'The product has been deleted!' }
     } else {
-      return { message: 'The product has use is another' };
+      return { message: 'The product has use is another' }
+    }
   }
 }

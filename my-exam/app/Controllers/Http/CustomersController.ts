@@ -5,6 +5,17 @@ import Customer from 'App/Models/Customer'
 export default class CustomersController {
   public async getAll() {
     var result = await Customer.all()
+    var country = ctx.request.input('country')
+    var employeeId = ctx.request.input('employeeId')
+    var query = Customer.query()
+
+    if (country) {
+      query.where('country', country)
+    }
+    if (employeeId) {
+      query.where('employee_id', employeeId)
+    }
+    var result = await query
     return result
   }
   public async getEmployeeId(ctx: HttpContextContract) {
