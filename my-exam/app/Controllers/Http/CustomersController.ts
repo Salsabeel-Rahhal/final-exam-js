@@ -84,10 +84,15 @@ export default class CustomersController {
     var result = await customer.save()
     return result
   }
-  public async destroy(ctx: HttpContextContract) {
-    var id = ctx.params.id
-    var customer = await Customer.findOrFail(id)
-    await customer.delete()
-    return { message: 'The customer has been deleted!' }
+  public async destory(ctx: HttpContextContract) {
+    var EmployeeId = ctx.params.employee_id
+    if (EmployeeId === null) {
+      var id = ctx.params.id
+      var customer = await Customer.findOrFail(id)
+      await customer.delete()
+      return { message: 'The customer has been deleted!' }
+    } else {
+      return { message: 'The customer has use is another' }
+    }
   }
 }

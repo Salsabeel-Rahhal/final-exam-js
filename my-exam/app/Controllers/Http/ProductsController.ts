@@ -73,9 +73,13 @@ export default class ProductsController {
     return result
   }
   public async destroy(ctx: HttpContextContract) {
-    var id = ctx.params.id
-    var product = await Product.findOrFail(id)
-    await product.delete()
-    return { message: 'The product has been deleted!' }
+    var ProductLineId = ctx.params.product_line_id;
+    if (ProductLineId == null) {
+      var id = ctx.params.id;
+      var product = await product.findOrFail(id);
+      await product.delete();
+      return { message: 'The product has been deleted!' };
+    } else {
+      return { message: 'The product has use is another' };
   }
 }

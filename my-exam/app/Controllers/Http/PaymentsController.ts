@@ -47,10 +47,15 @@ export default class PaymentsController {
     var result = await payment.save()
     return result
   }
-  public async destroy(ctx: HttpContextContract) {
-    var id = ctx.params.id
-    var payment = await Payment.findOrFail(id)
-    await payment.delete()
-    return { message: 'The payments has been deleted!' }
+  public async destory(ctx: HttpContextContract) {
+    var customerId = ctx.params.customer_id
+    if (customerId === null) {
+      var id = ctx.params.id
+      var payment = await Payment.findOrFail(id)
+      await payment.delete()
+      return { message: 'The payment has been deleted!' }
+    } else {
+      return { message: 'The payment has use is another' }
+    }
   }
 }
