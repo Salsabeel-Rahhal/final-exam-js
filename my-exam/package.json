@@ -62,5 +62,10 @@
     "proxy-addr": "^2.0.7",
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.21"
+    
+  },
+  "resolutions": {
+    "graceful-fs": "4.2.3"
   }
+
 }

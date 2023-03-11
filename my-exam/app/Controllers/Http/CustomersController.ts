@@ -46,7 +46,9 @@ export default class CustomersController {
     const fields = await ctx.request.validate({ schema: newSchema })
     var customer = new Customer()
     Customer.create(ctx.request.all())
+
     var result = customer.save()
+
     return result
   }
   public async update(ctx: HttpContextContract) {
@@ -66,10 +68,13 @@ export default class CustomersController {
       credit_limit: schema.number(),
     })
     const fields = await ctx.request.validate({ schema: newSchema })
-    var id = fields.id
-    var customer = await Customer.findOrFail(id)
-    Customer.updateOrCreate(customer, ctx.request.all())
-    var result = customer.save()
+    var id = ctx.request.id
+    var customer = new Customer()
+    customer = await Customer.findOrFail(id)
+    await Customer.updateOrCreate(ctx.request.all(), customer)
+
+    // var result = customer.save()
+    // return ctx.request.all()
   }
   public async destory(ctx: HttpContextContract) {
     var EmployeeId = ctx.params.employee_id

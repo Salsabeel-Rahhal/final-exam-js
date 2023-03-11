@@ -1,5 +1,6 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
+import Customer from './Customer'
 
 export default class Employee extends BaseModel {
   public static table = 'employees'
@@ -19,4 +20,8 @@ export default class Employee extends BaseModel {
   public reportsTo: number
   @column({ serializeAs: 'job_title' })
   public jobTitle: string
+  @belongsTo(() => Customer, {
+    foreignKey: 'id',
+  })
+  public CustomerId: BelongsTo<typeof Customer>
 }
